@@ -1,0 +1,22 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+}
+
+.btn-group .btn {
+    margin: 5px;
+}
+
+.input-group {
+    padding: 15px;
+    align-items: center;
+}
+
+#bits {
+    margin: 5px;
+}
