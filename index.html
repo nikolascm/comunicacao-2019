@@ -1,371 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      <title>Trabalho 1 - Comunicação de Dados</title>
+	<title>Trabalho 1 - Comunicação de Dados</title>
 
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-      <!-- Bootstrap core CSS -->
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-      <!-- Material Design Bootstrap -->
-      <link href="css/mdb.min.css" rel="stylesheet">
-      <!-- Your custom styles (optional) -->
-      <link href="css/style.css" rel="stylesheet">
-      <!-- Plotly.js -->
-      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  </head>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="css/mdb.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="css/style.css" rel="stylesheet">
+	<!-- Plotly.js -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
 
 <body>
 
-    <div class="container">
-      <div class="col-sm-12" id="myButtons">
-        <div class="btn-group btn-group-toggle d-flex flex-column flex-md-row" data-toggle="buttons">
-          
-          <label class="btn btn-primary check_button" id="nrzl">
-            <input type="checkbox" autocomplete="off"> NRZ-L
-          </label>
+	<div class="container">
+		<div class="col-sm-12" id="myButtons">
+			<div class="btn-group btn-group-toggle d-flex flex-column flex-md-row" data-toggle="buttons">
+				<button type="button" class="btn btn-primary" id="nrzl">NRZ-L</button>
+				<button type="button" class="btn btn-primary" id="nrzi">NRZ-I</button>
+				<button type="button" class="btn btn-primary" id="ami">AMI</button>
+				<button type="button" class="btn btn-primary" id="pseudo">Pseudoternário</button>
+				<button type="button" class="btn btn-primary" id="manchester">Manchester</button>
+				<button type="button" class="btn btn-primary" id="manchester_dif">Manchester Diferencial</button>
+			</div>
+		</div>
 
-          <label class="btn btn-primary check_button" id="nrzi">
-            <input type="checkbox" autocomplete="off" > NRZ-I
-          </label>
-          
-          <label class="btn btn-primary check_button" id="ami">
-            <input type="checkbox" autocomplete="off"> AMI
-          </label>
-          
-          <label class="btn btn-primary check_button" id="pseudo">
-            <input type="checkbox" autocomplete="off"> Pseudoternário
-          </label>
-              
-          <label class="btn btn-primary check_button" id="manchester">
-            <input type="checkbox" autocomplete="off"> Manchester
-          </label>
-          
-          <label class="btn btn-primary check_button" id="manchester_d">
-            <input type="checkbox" autocomplete="off"> Manchester Diferencial
-          </label>
-        </div>
-      </div>
-          
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="btn-group btn-group-toggle d-flex flex-column flex-md-row" data-toggle="buttons">
-            <div class="input-group">
-              <input type="text" id="bits" class="form-control" placeholder="Sequência de bits">
-            </div>           
-          </div>
-        </div>
-      </div>
-      
-      <div id="myDiv"></div>
-    </div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="btn-group btn-group-toggle d-flex flex-column flex-md-row" data-toggle="buttons">
+					<div class="input-group">
+						<input type="text" id="bits" class="form-control" placeholder="Sequência de bits">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="myDiv"></div>
+	</div>
 
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <script>
-       
-      $(document).ready(function(){ 
-
-
-        function plot_image(x_aux,y_aux) {
-        
-        var trace1 = {
-                    x: x_aux,
-                    y: y_aux,
-                    type: 'scatter',
-                };
-
-                var layout = {
-                    xaxis: {
-                        autotick: false,
-                        ticks: 'outside',
-                        tick0: 0,
-                        dtick: 1,
-                        ticklen:6,
-                        tickwidth: 4,
-                        tickcolor: '#000'
-                    },
-                    yaxis: {
-                        autotick: false,
-                        ticks: 'outside',
-                        tick0: 0,
-                        dtick: 1,
-                        ticklen:6,
-                        tickwidth: 4,
-                        tickcolor: '#000'
-                    }
-                };
-                var data = [trace1];
-                Plotly.newPlot('myDiv', data, layout, {showSendToCloud: true});
-        }
-
-        function manchester_d_algorithm(bits_aux) {
-          
-          var x_aux = [];
-          var y_aux = [];
-          var cont = 0;
-          var pos = false;
-
-          if(bits_aux.length==1) {
-            if(bits_aux[0]==0) {
-                x_aux.push(cont,cont);
-                y_aux.push(1,-1);
-            }  
-            x_aux.push(cont, cont+=0.5,cont,cont+=0.5);
-            y_aux.push(-1,-1,1,1);
-          } else {
-
-          for(var i=0; i<bits_aux.length-1; i++) {
-            if(i==0) {
-              if(bits_aux[0]==0) {
-                x_aux.push(cont,cont);
-                y_aux.push(1,-1);
-              }  
-              x_aux.push(cont, cont+=0.5,cont,cont+=0.5);
-              y_aux.push(-1,-1,1,1);
-            }
-
-            if(bits_aux[i+1]==0) {
-
-              if(y_aux[y_aux.length-1]<0) {
-                  x_aux.push(cont, cont+=0.5,cont,cont+=0.5);
-                  y_aux.push(1,1,-1,-1);
-              } else {
-
-              x_aux.push(cont, cont+=0.5,cont,cont+=0.5);
-              y_aux.push(-1,-1,1,1);
-              }
-            
-            } else if(bits_aux[i+1]==1) {
-               
-               if(y_aux[y_aux.length-1]>0) {
-                  x_aux.push(cont, cont+=0.5,cont,cont+=0.5);
-                  y_aux.push(1,1,-1,-1);
-               
-               } else {
-                    x_aux.push(cont, cont+=0.5,cont,cont+=0.5);
-                    y_aux.push(-1,-1,1,1);
-               }
-            }
-          }
-          }
-          plot_image(x_aux,y_aux);
-        }
-        
-        function manchester_algorithm(bits_aux) {
-          var x_aux = [];
-          var y_aux = [];
-          var cont = 0;
-
-          for(var i=0; i<bits_aux.length; i++) {
-                    if(bits_aux[i]==0) {
-                        x_aux.push(cont,cont+=0.5,cont,cont+=0.5);
-                        y_aux.push(1,1,-1,-1);
-                    }
-                    if(bits_aux[i]==1) {
-                        x_aux.push(cont, cont+=0.5,cont,cont+=0.5);
-                        y_aux.push(-1,-1,1,1);
-                    }
-                }
-          plot_image(x_aux,y_aux);               
-        }
-
-        function pseudo_algorithm(bits_aux) {
-          var x_aux = [];
-          var y_aux = [];
-          var cont = 0;
-          var up = false;
-
-          for(var i=0; i<bits_aux.length; i++) {
-                    if(bits_aux[i]==1) {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(0, 0);
-                    }
-                    if(bits_aux[i]==0) {
-                      if(up==false) {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(1, 1);
-                      } else {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(-1, -1);
-                      }
-                      up = !up;
-                    }
-                }
-          plot_image(x_aux,y_aux);               
-         
-        
-        }
-
-        function ami_algorithm(bits_aux) {
-          var x_aux = [];
-          var y_aux = [];
-          var cont = 0;
-          var up = false;
-
-          for(var i=0; i<bits_aux.length; i++) {
-                    if(bits_aux[i]==0) {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(0, 0);
-                    }
-                    if(bits_aux[i]==1) {
-                      if(up==false) {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(1, 1);
-                      } else {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(-1, -1);
-                      }
-                      up = !up;
-                    }
-                }
-          plot_image(x_aux,y_aux);               
-         
-
-        }
-
-        function nrzi_algorithm(bits_aux) {
-
-          var x_aux = [];
-          var y_aux = [];
-          var cont = 0;
-
-          if(bits_aux.length==1) {
-            if(bits_aux[0]==0) {
-                x_aux.push(cont, cont+=1);
-                y_aux.push(1, 1);
-            } else {
-                x_aux.push(cont, cont+=1);
-                y_aux.push(-1, -1);
-            }
-          } else {
-
-          for(var i=0; i<bits_aux.length-1; i++) {
-          if(i==0) {
-            if(bits_aux[i]==0) {
-              x_aux.push(cont, cont+=1);
-              y_aux.push(1, 1);
-            } else {
-              x_aux.push(cont, cont+=1);
-              y_aux.push(-1, -1);
-            } 
-          }
-
-          if(bits_aux[i+1]==0) {
-            get_y = y_aux[y_aux.length-2];
-            get_y_ = y_aux[y_aux.length-1];
-            x_aux.push(cont, cont+=1);
-            y_aux.push(get_y, get_y_);
-          } else {
-
-            if(y_aux[y_aux.length-1]==1)
-              get_y = -1;
-            else
-              get_y = 1;
-          
-            x_aux.push(cont, cont+=1);
-            y_aux.push(get_y,get_y);
-          }
-          }
-          }
-          plot_image(x_aux,y_aux);               
-        }
-        
-        function nrzl_algorithm(bits_aux) {
-          var x_aux = [];
-          var y_aux = [];
-          var cont = 0;
-
-          for(var i=0; i<bits_aux.length; i++) {
-                    if(bits_aux[i]==0) {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(1, 1);
-                    }
-                    if(bits_aux[i]==1) {
-                        x_aux.push(cont, cont+=1);
-                        y_aux.push(-1, -1);
-                    }
-                }
-          plot_image(x_aux,y_aux);               
-                
-        }
-
-        function executa(String, bits_aux) {
-          
-          switch (String) {
-            case 'nrzl':
-              nrzl_algorithm(bits_aux);
-              break;
-            case 'nrzi':
-              nrzi_algorithm(bits_aux);
-              break;
-            case 'ami':
-              ami_algorithm(bits_aux);
-              break;
-            case 'pseudo':
-              pseudo_algorithm(bits_aux);
-              break;
-            case 'manchester':
-              manchester_algorithm(bits_aux);
-              break;
-            case 'manchester_d':
-              manchester_d_algorithm(bits_aux);
-              break;
-          }
-  
-        }
-
-        $("#myButtons .btn").click(function() {   
-          
-          var bits = $('#bits').val();
-          var bits_aux = new String(bits);
-          var valid = false;
-          
-          if(bits_aux.length > 0) {
-            for(var i=0; i<bits_aux.length; i++) {
-              if((bits_aux[i] != 0) && (bits_aux[i] != 1)) {
-                valid = false;
-                break;
-              }
-              valid = true;
-            }
-          }
-          
-          if(valid==false) {
-            window.alert("Invalid Sequence! Try again");
-          } else {
-            /*$(this).button('toggle');
-            
-            var check_box = $(this).find("input");
-            var checked = $(check_box).data("checked");
-            if (!checked) {
-              $(check_box).data("checked", true);*/
-              executa($(this).attr("id"),bits_aux); 
-              console.log($(this).attr("id"));
-          }
-     });   
-        
-       });   
-      </script>
-                    
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
+	<!-- SCRIPTS -->
+	<!-- JQuery, Bootstrap tooltips, Bootstrap core JavaScript, MDB core JavaScript -->
+	<script type="text/javascript" src="encodingAlgorithms.js"></script>
+	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
 
 </html>
