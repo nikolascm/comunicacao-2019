@@ -34,7 +34,7 @@ $(document).ready(function () {
 		Plotly.newPlot('myDiv', data, layout, { showSendToCloud: true });
 	}
 
-	function manchesterAlgorithm(bits) {
+	function manchesterDif_Algorithm(bits) {
 		var eixo_x = [];
 		var eixo_y = [];
 		var cont = 0;
@@ -219,7 +219,7 @@ $(document).ready(function () {
 				manchester_Algorithm(bits);
 				break;
 			case 'manchester_dif':
-				manchesterAlgorithm(bits);
+				manchesterDif_Algorithm(bits);
 				break;
 		}
 	}
